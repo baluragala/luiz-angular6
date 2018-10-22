@@ -1,0 +1,20 @@
+"use strict";
+var username = "John";
+var age;
+age = 20;
+var isWorking = true;
+var friends;
+friends = ["Lina", "Anna", "Wili"];
+var friends1;
+friends1 = ["Lina", "Anna", "Wili"];
+var Status;
+(function (Status) {
+    Status[Status["Started"] = 0] = "Started";
+    Status[Status["InProgress"] = 1] = "InProgress";
+    Status[Status["Completed"] = 2] = "Completed";
+})(Status || (Status = {}));
+var workStatus = Status.Completed;
+var state;
+var canHoldAnything;
+canHoldAnything = 10;
+canHoldAnything = {};
