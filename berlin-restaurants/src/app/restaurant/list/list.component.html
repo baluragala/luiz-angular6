@@ -3,6 +3,4 @@
   type.toUpperCase() :
   type.toLowerCase()}} Restaurants</h2>
 <h4>Selected restaurant Id: {{selectedRestaurantId}}</h4>
-<blr-item [restaurant]="restaurants[0]" (selected)="onSelected($event)"></blr-item>
-<blr-item [restaurant]="restaurants[1]" (selected)="onSelected($event)"></blr-item>
-<blr-item [restaurant]="restaurants[2]" (selected)="onSelected($event)"></blr-item>
+<blr-item *ngFor="let r of restaurants" [restaurant]="r" (selected)="onSelected($event)"></blr-item>

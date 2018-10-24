@@ -21,7 +21,6 @@ export class ListComponent implements OnInit {
       details: "http://tour-pedia.org/api/getPlaceDetails?id=101004"
     },
     {
-      address: "",
       category: "restaurant",
       id: 100263,
       lat: 52.442259616828,
