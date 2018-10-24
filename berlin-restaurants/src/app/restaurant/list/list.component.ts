@@ -7,6 +7,8 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ListComponent implements OnInit {
   type: string = "Top 10";
+  selectedRestaurantId: number;
+
   restaurants = [
     {
       id: 101004,
@@ -61,5 +63,9 @@ export class ListComponent implements OnInit {
   onMouseOver(e) {
     console.log(e);
     console.log("onMouseOver");
+  }
+
+  onSelected(restaurantId: number) {
+    this.selectedRestaurantId = restaurantId;
   }
 }
