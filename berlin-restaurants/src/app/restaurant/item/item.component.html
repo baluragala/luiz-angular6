@@ -1,4 +1,17 @@
-<div class="item" (click)="onClick()">
+<!-- <div [ngClass]="{item:true, good:restaurant.address, bad:!restaurant.address}" (click)="onClick()">
+  <h3>{{sno}} - {{restaurant.name}}({{restaurant.id}})</h3>
+  <div *ngIf="restaurant.address == undefined else found">
+    <h3 style="color:red">ADDRESS NOT FOUND</h3>
+    <p>extra info</p>
+  </div>
+  <code>{{restaurant.location}}</code>
+</div>
+
+<ng-template #found>
+  <p>{{restaurant.address?.toUpperCase()}}</p>
+</ng-template> -->
+
+<div class="item" [ngStyle]="itemStyle" (click)="onClick()">
   <h3>{{sno}} - {{restaurant.name}}({{restaurant.id}})</h3>
   <div *ngIf="restaurant.address == undefined else found">
     <h3 style="color:red">ADDRESS NOT FOUND</h3>

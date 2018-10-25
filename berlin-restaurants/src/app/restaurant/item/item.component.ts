@@ -23,13 +23,21 @@ export class ItemComponent implements OnInit {
   @Input()
   sno;
 
-
   @Output()
   selected: EventEmitter<number> = new EventEmitter();
 
+  itemStyle;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.itemStyle = {
+      "border-bottom":
+        this.restaurant.address == undefined
+          ? "2px solid red"
+          : "2px solid green"
+    };
+  }
 
   onClick() {
     this.selected.emit(this.restaurant.id);
