@@ -18,8 +18,10 @@
     <p>extra info</p>
   </div>
   <code>{{restaurant.location}}</code>
+  <h4>{{restaurant.budget | currency:'EUR':'symbol':'4.2-2'}}</h4>
+  <p>Website : {{restaurant.details | domain:false }}</p>
 </div>
 
 <ng-template #found>
-  <p>{{restaurant.address?.toUpperCase()}}</p>
+  <p>{{restaurant.address | lowercase}}</p>
 </ng-template>

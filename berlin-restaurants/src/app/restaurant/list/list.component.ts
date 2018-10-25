@@ -18,7 +18,8 @@ export class ListComponent implements OnInit {
       location: "Berlin",
       lat: 52.405091,
       lng: 13.57337,
-      details: "http://tour-pedia.org/api/getPlaceDetails?id=101004"
+      details: "http://tour-pedia.org/api/getPlaceDetails?id=101004",
+      budget: 80
     },
     {
       category: "restaurant",
@@ -30,7 +31,8 @@ export class ListComponent implements OnInit {
       originalId: "4e209cb718a88345f0429983",
       polarity: 0,
       subCategory: "Italian Restaurant",
-      details: "http://tour-pedia.org/api/getPlaceDetails?id=100263"
+      details: "http://tour-pedia.org/api/getPlaceDetails?id=100263",
+      budget: 120
     },
     {
       id: 324915,
@@ -43,7 +45,8 @@ export class ListComponent implements OnInit {
       numReviews: 1,
       reviews: "http://tour-pedia.org/api/getReviewsByPlaceId?placeId=324915",
       polarity: 0,
-      details: "http://tour-pedia.org/api/getPlaceDetails?id=324915"
+      details: "http://tour-pedia.org/api/getPlaceDetails?id=324915",
+      budget: 90000
     }
   ];
   constructor() {}
