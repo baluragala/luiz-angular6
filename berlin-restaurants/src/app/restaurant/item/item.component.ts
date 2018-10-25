@@ -20,6 +20,10 @@ export class ItemComponent implements OnInit {
   @Input()
   restaurant;
 
+  @Input()
+  sno;
+
+
   @Output()
   selected: EventEmitter<number> = new EventEmitter();
 
