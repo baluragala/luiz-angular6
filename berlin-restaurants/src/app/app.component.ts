@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { RestaurantService } from "./restaurant/restaurant.service";
 
 @Component({
   selector: "blr-root",
