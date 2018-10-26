@@ -38,7 +38,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.service
       .getRestaurants()
-      .subscribe(restaurants => (this.restaurants = restaurants.slice(0, 20)));
+      .subscribe(restaurants => (this.restaurants = restaurants));
   }
 
   getType() {

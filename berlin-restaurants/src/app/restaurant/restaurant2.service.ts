@@ -10,13 +10,12 @@ export class Restaurant2Service {
 
   getRestaurants() {
     const params = {
-      category: "restaurant",
-      location: "Berlin",
-      source: "Facebook"
+      _page: "1",
+      _limit: "20"
     };
 
     return this.http.get<Array<RestaurantRecord>>(
-      "http://tour-pedia.org/api/getPlaces",
+      "http://localhost:3000/restaurants",
       {
         params
       }
