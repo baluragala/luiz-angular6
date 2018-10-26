@@ -12,7 +12,7 @@
 </ng-template> -->
 
 <div class="item" [ngStyle]="itemStyle" (click)="onClick()">
-  <h3>{{sno}} - {{restaurant.name}}({{restaurant.id}})</h3>
+  <h3>{{sno}} - {{restaurant.name}}({{restaurant.id?.$id}})</h3>
   <div *ngIf="restaurant.address == undefined else found">
     <h3 style="color:red">ADDRESS NOT FOUND</h3>
     <p>extra info</p>
