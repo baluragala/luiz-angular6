@@ -7,6 +7,7 @@ import { SearchComponent } from "./search/search.component";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { DetailComponent } from "./detail/detail.component";
+import { PrivateGuard } from "../private.guard";
 
 @NgModule({
   imports: [
@@ -15,7 +16,11 @@ import { DetailComponent } from "./detail/detail.component";
     HttpClientModule,
     RouterModule.forChild([
       { path: "restaurants", component: ListComponent },
-      { path: "restaurants/:name", component: DetailComponent }
+      {
+        path: "restaurants/:name",
+        component: DetailComponent,
+        canActivate: [PrivateGuard]
+      }
     ])
   ],
   declarations: [ListComponent, ItemComponent, SearchComponent],
