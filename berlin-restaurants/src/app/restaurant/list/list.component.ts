@@ -3,19 +3,15 @@ import { RestaurantService } from "../restaurant.service";
 import { Restaurant2Service } from "../restaurant2.service";
 //import { restaurantFactory } from "src/app/factory.function";
 import { RestaurantRecord } from "../../restaurant-record.interface";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "blr-list",
   templateUrl: "./list.component.html",
   styleUrls: ["./list.component.css"],
   providers: [
-    { provide: RestaurantService, useClass: Restaurant2Service },
-    { provide: "API_KEY", useValue: "2wsed45&6hgu*" },
-    { provide: "API_SECRET", useValue: "3wwerd&6hgu*" },
-    {
-      provide: "ENV",
-      useValue: "DEVELOPMENT"
-    }
+    { provide: RestaurantService, useClass: Restaurant2Service }
+
     // {
     //   provide: RestaurantService,
     //   useFactory: restaurantFactory,
@@ -28,11 +24,9 @@ export class ListComponent implements OnInit {
   selectedRestaurantId: number;
 
   restaurants: Array<RestaurantRecord>;
-  constructor(
-    private service: RestaurantService,
-    @Inject("API_KEY") private apiKey: string
-  ) {
-    console.log(service, apiKey);
+  constructor(private service: RestaurantService, private router: Router) {
+    console.log(router);
+    //console.log(service, apiKey);
   }
 
   ngOnInit() {

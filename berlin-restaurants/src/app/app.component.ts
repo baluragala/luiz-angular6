@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { RestaurantService } from "./restaurant/restaurant.service";
+import es from "@angular/common/locales/es";
+import { registerLocaleData } from "@angular/common";
 
 @Component({
   selector: "blr-root",
@@ -8,4 +10,8 @@ import { RestaurantService } from "./restaurant/restaurant.service";
 })
 export class AppComponent {
   title = "berlin-restaurants";
+
+  ngOnInit() {
+    registerLocaleData(es);
+  }
 }
