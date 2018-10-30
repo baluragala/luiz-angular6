@@ -8,6 +8,17 @@ import { RestaurantRecord } from "../restaurant-record.interface";
 export class Restaurant2Service {
   constructor(private http: HttpClient) {}
 
+  getRestaurantByName(name: string) {
+    return this.http.get<Array<RestaurantRecord>>(
+      "http://localhost:3000/restaurants",
+      {
+        params: {
+          name
+        }
+      }
+    );
+  }
+
   getRestaurants() {
     const params = {
       _page: "1",

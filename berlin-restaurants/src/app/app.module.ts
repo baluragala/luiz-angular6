@@ -10,13 +10,16 @@ import { RouterModule } from "@angular/router";
 import { ListComponent } from "./restaurant/list/list.component";
 import { HomeComponent } from "./home/home.component";
 import { OthersModule } from "./others/others.module";
+import { ItemComponent } from "./restaurant/item/item.component";
+import { DetailComponent } from "./restaurant/detail/detail.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     SwitchComponent,
     AsyncpipeComponent,
-    HomeComponent
+    HomeComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +30,7 @@ import { OthersModule } from "./others/others.module";
       {
         path: "home",
         component: HomeComponent
-      },
-      { path: "restaurants", component: ListComponent }
+      }
     ])
   ],
   providers: [],

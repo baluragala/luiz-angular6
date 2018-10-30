@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { RestaurantService } from "../restaurant.service";
+import { Restaurant2Service } from "../restaurant2.service";
 
 @Component({
   selector: "blr-item",
