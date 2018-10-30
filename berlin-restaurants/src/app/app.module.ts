@@ -12,6 +12,7 @@ import { HomeComponent } from "./home/home.component";
 import { OthersModule } from "./others/others.module";
 import { ItemComponent } from "./restaurant/item/item.component";
 import { DetailComponent } from "./restaurant/detail/detail.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DetailComponent } from "./restaurant/detail/detail.component";
     SwitchComponent,
     AsyncpipeComponent,
     HomeComponent,
-    DetailComponent
+    DetailComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,10 @@ import { DetailComponent } from "./restaurant/detail/detail.component";
       {
         path: "home",
         component: HomeComponent
+      },
+      {
+        path: "**",
+        component: NotFoundComponent
       }
     ])
   ],

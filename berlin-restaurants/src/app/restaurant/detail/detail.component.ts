@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Restaurant2Service } from "../restaurant2.service";
 import { RestaurantRecord } from "src/app/restaurant-record.interface";
 
@@ -12,14 +12,29 @@ export class DetailComponent implements OnInit {
   restaurant: RestaurantRecord;
   constructor(
     private route: ActivatedRoute,
-    private service: Restaurant2Service
+    private service: Restaurant2Service,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.service
-      .getRestaurantByName(this.route.snapshot.params["name"])
-      .subscribe(data => {
+    console.log(this.route.snapshot.queryParams);
+    this.route.queryParamMap.subscribe(map => {
+      console.log(map);
+    });
+    this.route.paramMap.subscribe(map => {
+      console.log(map);
+      this.service.getRestaurantByName(map.get("name")).subscribe(data => {
         this.restaurant = data[0];
       });
+    });
+
+    // this.service
+    //   .getRestaurantByName(this.route.snapshot.params["name"])
+    //   .subscribe(data => {
+    //     this.restaurant = data[0];
+    //   });
+  }
+  onClick() {
+    this.router.navigate(["/restaurants"], { queryParams: {} });
   }
 }
