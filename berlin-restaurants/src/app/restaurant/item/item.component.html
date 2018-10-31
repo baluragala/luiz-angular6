@@ -12,11 +12,14 @@
 </ng-template> -->
 
 <div class="item" [ngStyle]="itemStyle" (click)="onClick()">
+  <a [routerLink]='[]' [queryParams]="{'mode':'edit','name':restaurant.name}">EDIT</a>
   <a [routerLink]=[restaurant.name] [queryParams]="{'access_token':'11s3321sddd'}">
     <h3>{{sno}} - {{restaurant.name}}({{restaurant.id?.$id}})</h3>
   </a>
   <div *ngIf="restaurant.address == undefined else found">
-    <h3 style="color:red">ADDRESS NOT FOUND</h3>
+
+    <h3 style=" color:red">ADDRESS
+      NOT FOUND</h3>
     <p>extra info</p>
   </div>
   <code>{{restaurant.location}}</code>
