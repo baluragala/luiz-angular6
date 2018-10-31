@@ -14,7 +14,8 @@ export class AddComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit() {
+  onSubmit(f) {
+    console.log(f);
     this.service
       .addRestaurant({
         name: this.restaurantName,

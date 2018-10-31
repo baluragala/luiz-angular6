@@ -1,0 +1,23 @@
+<div>
+  <form [formGroup]="addForm">
+    <label for="restaurantName">Restaurant Name</label>
+    <input type="text" formControlName="name" />
+    <p class="error" *ngIf="addForm.controls.name.dirty && addForm.controls.name.errors?.required">Name is required</p>
+    <p class="error" *ngIf="addForm.controls.name.dirty && addForm.controls.name.errors?.minlength">Alteast 3
+      characters required</p>
+
+    <label for="restaurantAddress">Restaurant Address</label>
+    <input type="text" formControlName="address" />
+
+    <label for="restaurantCategory">Restaurant Categpry</label>
+    <select formControlName="category">
+      <option value="italian">Italian</option>
+      <option value="mexican">Mexican</option>
+      <option value="thai">Thai</option>
+      <option value="indian">Indian</option>
+      <option value="others">Others</option>
+    </select>
+
+    <input type="submit" value="ADD" [disabled]="!addForm.valid" />
+  </form>
+</div>

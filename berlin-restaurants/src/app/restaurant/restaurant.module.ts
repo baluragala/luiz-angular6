@@ -9,13 +9,15 @@ import { RouterModule } from "@angular/router";
 import { DetailComponent } from "./detail/detail.component";
 import { PrivateGuard } from "../private.guard";
 import { AddComponent } from "./add/add.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FavoriteRestaurantComponent } from "./favorite-restaurant/favorite-restaurant.component";
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild([
       { path: "restaurants", component: ListComponent },
@@ -26,7 +28,13 @@ import { FormsModule } from "@angular/forms";
       }
     ])
   ],
-  declarations: [ListComponent, ItemComponent, SearchComponent, AddComponent],
+  declarations: [
+    ListComponent,
+    ItemComponent,
+    SearchComponent,
+    AddComponent,
+    FavoriteRestaurantComponent
+  ],
   exports: [ListComponent]
 })
 export class RestaurantModule {}
