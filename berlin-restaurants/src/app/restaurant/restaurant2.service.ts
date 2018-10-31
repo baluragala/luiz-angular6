@@ -21,7 +21,7 @@ export class Restaurant2Service {
 
   getRestaurants() {
     const params = {
-      _page: "1",
+      _page: "51",
       _limit: "20"
     };
 
@@ -30,6 +30,13 @@ export class Restaurant2Service {
       {
         params
       }
+    );
+  }
+
+  addRestaurant(restaurant: RestaurantRecord) {
+    return this.http.post<RestaurantRecord>(
+      `http://localhost:3000/restaurants`,
+      restaurant
     );
   }
 }

@@ -1,15 +1,15 @@
 export interface RestaurantRecord {
-  id: {
+  id?: {
     $id: string;
   };
-  name: string;
-  address: string;
-  category: string;
-  location: string;
-  lat: number;
-  lng: number;
-  subCategory: Array<string>;
-  polarity: number;
-  source: string;
-  details: string;
+  name?: string;
+  address?: string;
+  category?: string;
+  location?: string;
+  lat?: number;
+  lng?: number;
+  subCategory?: Array<string>;
+  polarity?: number;
+  source?: string;
+  details?: string;
 }

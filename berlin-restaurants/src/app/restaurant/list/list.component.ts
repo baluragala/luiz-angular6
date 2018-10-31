@@ -1,16 +1,18 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, InjectionToken } from "@angular/core";
 import { RestaurantService } from "../restaurant.service";
 import { Restaurant2Service } from "../restaurant2.service";
-//import { restaurantFactory } from "src/app/factory.function";
+import { restaurantFactory } from "../../factory.function";
 import { RestaurantRecord } from "../../restaurant-record.interface";
 import { Router } from "@angular/router";
 
+const ENV_TOKEN = new InjectionToken<string>("ENV");
 @Component({
   selector: "blr-list",
   templateUrl: "./list.component.html",
   styleUrls: ["./list.component.css"],
   providers: [
-    { provide: RestaurantService, useClass: Restaurant2Service }
+    { provide: RestaurantService, useClass: Restaurant2Service },
+    { provide: ENV_TOKEN, useValue: "DEVELOPMENT" }
 
     // {
     //   provide: RestaurantService,
@@ -24,9 +26,13 @@ export class ListComponent implements OnInit {
   selectedRestaurantId: number;
 
   restaurants: Array<RestaurantRecord>;
-  constructor(private service: RestaurantService, private router: Router) {
+  constructor(
+    private service: RestaurantService,
+    private router: Router,
+    @Inject(ENV_TOKEN) private apiKey: string
+  ) {
     console.log(router);
-    //console.log(service, apiKey);
+    console.log(service, apiKey);
   }
 
   ngOnInit() {

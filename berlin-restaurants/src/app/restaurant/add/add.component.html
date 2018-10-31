@@ -1,0 +1,24 @@
+<div>
+  <form #addForm="ngForm" (submit)="onSubmit(addForm)">
+
+    <label for="restaurantName">Restaurant Name</label>
+    <input type="text" name="restaurantName" [(ngModel)]="restaurantName" required minlength="3" maxlength="30" #rname="ngModel" />
+    <p class="error" *ngIf="rname.dirty && rname.errors?.required">Name is required</p>
+    <p class="error" *ngIf="rname.dirty && rname.errors?.minlength">Alteast 3 characters required</p>
+
+    <label for="restaurantAddress">Restaurant Address</label>
+    <input type="text" name="restaurantAddress" [(ngModel)]="restaurantAddress" required minlength="3" maxlength="100"
+      #raddress="ngModel" />
+
+    <label for="restaurantCategory">Restaurant Categpry</label>
+    <select name="restaurantCategory" [(ngModel)]="restaurantCategory">
+      <option value="italian">Italian</option>
+      <option value="mexican">Mexican</option>
+      <option value="thai">Thai</option>
+      <option value="indian">Indian</option>
+      <option value="others">Others</option>
+    </select>
+
+    <input type="submit" value="ADD" [disabled]="!addForm.valid" />
+  </form>
+</div>

@@ -8,12 +8,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { DetailComponent } from "./detail/detail.component";
 import { PrivateGuard } from "../private.guard";
+import { AddComponent } from "./add/add.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forChild([
       { path: "restaurants", component: ListComponent },
       {
@@ -23,7 +26,7 @@ import { PrivateGuard } from "../private.guard";
       }
     ])
   ],
-  declarations: [ListComponent, ItemComponent, SearchComponent],
+  declarations: [ListComponent, ItemComponent, SearchComponent, AddComponent],
   exports: [ListComponent]
 })
 export class RestaurantModule {}
