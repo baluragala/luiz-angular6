@@ -9,30 +9,15 @@ const ENV_TOKEN = new InjectionToken<string>("ENV");
 @Component({
   selector: "blr-list",
   templateUrl: "./list.component.html",
-  styleUrls: ["./list.component.css"],
-  providers: [
-    { provide: RestaurantService, useClass: Restaurant2Service },
-    { provide: ENV_TOKEN, useValue: "DEVELOPMENT" }
-
-    // {
-    //   provide: RestaurantService,
-    //   useFactory: restaurantFactory,
-    //   deps: ["ENV"]
-    // }
-  ]
+  styleUrls: ["./list.component.css"]
 })
 export class ListComponent implements OnInit {
   type: string = "Top 10";
   selectedRestaurantId: number;
 
   restaurants: Array<RestaurantRecord>;
-  constructor(
-    private service: RestaurantService,
-    private router: Router,
-    @Inject(ENV_TOKEN) private apiKey: string
-  ) {
+  constructor(private service: RestaurantService, private router: Router) {
     console.log(router);
-    console.log(service, apiKey);
   }
 
   ngOnInit() {
