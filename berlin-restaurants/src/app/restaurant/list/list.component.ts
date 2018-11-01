@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   selectedRestaurantId: number;
 
   restaurants: Array<RestaurantRecord>;
-  constructor(private service: RestaurantService, private router: Router) {
+  constructor(private service: Restaurant2Service, private router: Router) {
     console.log(router);
   }
 

@@ -12,6 +12,7 @@ import { RestaurantRecord } from "src/app/restaurant-record.interface";
 import { of } from "rxjs";
 import { HttpClientModule } from "@angular/common/http";
 import { By } from "@angular/platform-browser";
+import { Restaurant2Service } from "../restaurant2.service";
 
 describe("ListComponent", () => {
   let component: ListComponent;
@@ -29,12 +30,12 @@ describe("ListComponent", () => {
       ],
       providers: [
         {
-          provide: RestaurantService,
+          provide: Restaurant2Service,
           useValue: {
             getRestaurants() {
               const restaurants: Array<RestaurantRecord> = [
                 { name: "r1", address: "a1", location: "b1" },
-                { name: "r1", address: "a1", location: "b1" }
+                { name: "r2", address: "a2", location: "b2" }
               ];
               return of(restaurants);
             }
@@ -70,5 +71,19 @@ describe("ListComponent", () => {
     component.type = "lengthy type value";
     fixture.detectChanges();
     expect(template.querySelector("h2").style.color).toBe("red");
+  });
+
+  it("should handle selected event emit by item", () => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(component, "onSelected");
+    const item = fixture.debugElement.query(By.directive(ItemComponent));
+    const itemComponetnInstance: ItemComponent = item.componentInstance;
+    itemComponetnInstance.selected.emit(itemComponetnInstance.restaurant);
+    expect(component.onSelected).toHaveBeenCalledWith({
+      name: "r1",
+      address: "a1",
+      location: "b1"
+    });
   });
 });
