@@ -1,8 +1,9 @@
-import { TestBed, async } from "@angular/core/testing";
+import { TestBed, async, fakeAsync, tick } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
 import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { APP_BASE_HREF } from "@angular/common";
+import { By } from "@angular/platform-browser";
 
 describe("AppComponent", () => {
   let fixture, app;
@@ -15,6 +16,10 @@ describe("AppComponent", () => {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.debugElement.componentInstance;
   }));
+
+  afterEach(() => {
+    fixture.destroy();
+  });
 
   it("should create the app", () => {
     expect(app).toBeTruthy();
@@ -36,4 +41,27 @@ describe("AppComponent", () => {
       "Welcome to angular6!"
     );
   });
+
+  // it("should display title", async(() => {
+  //   const compiled = fixture.debugElement;
+  //   compiled.query(By.css("button")).triggerEventHandler("click", null);
+  //   fixture.whenStable().then(() => {
+  //     console.log("whenStable", app);
+  //     fixture.detectChanges();
+  //     expect(compiled.query(By.css("h1")).nativeElement.textContent).toContain(
+  //       "Welcome to Amazing angular app!"
+  //     );
+  //   });
+  // }));
+
+  it("should display title", fakeAsync(() => {
+    const compiled = fixture.debugElement;
+    compiled.query(By.css("button")).triggerEventHandler("click", null);
+    tick(1000);
+    console.log("tick", app);
+    fixture.detectChanges();
+    expect(compiled.query(By.css("h1")).nativeElement.textContent).toContain(
+      "Welcome to Amazing angular app!"
+    );
+  }));
 });

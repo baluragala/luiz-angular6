@@ -14,4 +14,16 @@ export class AppComponent {
   ngOnInit() {
     registerLocaleData(es);
   }
+
+  setTitle() {
+    console.log("setTitle");
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Amazing angular app");
+      }, 1000);
+    }).then((v: string) => {
+      this.title = v;
+      console.log(this);
+    });
+  }
 }
