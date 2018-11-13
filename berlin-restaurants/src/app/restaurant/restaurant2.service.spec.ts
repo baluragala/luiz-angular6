@@ -40,14 +40,30 @@ describe("Restaurant2Service", () => {
         }
       ];
 
-      service.getRestaurants().subscribe((data: RestaurantRecord[]) => {
-        console.log("data", data);
-        expect(data).toEqual(mockRestaurants);
+      service.getRestaurants().subscribe((event: HttpEvent<any>) => {
+        switch (event.type) {
+          case HttpEventType.Sent:
+            console.log("sent");
+            break;
+          case HttpEventType.ResponseHeader:
+            console.log("header recived", event);
+            break;
+          case HttpEventType.Response:
+            console.log("done", event);
+            expect(event.status).toEqual(200);
+            expect(event.body).toEqual(mockRestaurants);
+        }
+        // console.log("data", data);
+        // expect(data).toEqual(mockRestaurants);
       });
 
       const mockReq = httpMock.expectOne(
         "http://localhost:3000/restaurants?_page=51&_limit=20"
       );
+      console.log(mockReq);
+      expect(mockReq.request.responseType).toEqual("json");
+      expect(mockReq.request.method).toBe("GET");
+
       mockReq.flush(mockRestaurants);
 
       httpMock.verify();

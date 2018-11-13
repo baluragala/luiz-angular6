@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpEvent } from "@angular/common/http";
 import { RestaurantRecord } from "../restaurant-record.interface";
 
 @Injectable({
@@ -25,12 +25,11 @@ export class Restaurant2Service {
       _limit: "20"
     };
 
-    return this.http.get<Array<RestaurantRecord>>(
-      "http://localhost:3000/restaurants",
-      {
-        params
-      }
-    );
+    return this.http.get("http://localhost:3000/restaurants", {
+      params,
+      reportProgress: true,
+      observe: "events"
+    });
   }
 
   addRestaurant(restaurant: RestaurantRecord) {
